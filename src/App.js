@@ -1,7 +1,8 @@
 import React from "react";
-import Info from "./components/info";
-import Form from "./components/form";
-import Weather from "./components/weather";
+import Info from "./components/Info";
+import Form from "./components/Form";
+import Weather from "./components/Weather";
+import "./App.css";
 
 const API_KEY = "9c10813ffe85a43b896f495aa170535e";
 
@@ -25,14 +26,11 @@ class App extends React.Component {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       );
       const data = await api_url.json();
-      console.log(data);
-
       const sunset = data.sys.sunset;
       const date = new Date();
       date.setTime(sunset);
       const sunset_date =
         date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-
       const sunrise = data.sys.sunrise;
       date.setTime(sunrise);
       const sunrise_date =
@@ -55,24 +53,28 @@ class App extends React.Component {
         feels_like: undefined,
         sunrise: undefined,
         sunset: undefined,
-        error: "Введите название города",
+        error: "Вы не ввели название города(страны)!",
       });
     }
   };
   render() {
     return (
-      <div>
-        <Info />
-        <Form weatherMethod={this.gettingWeather} />
-        <Weather
-          city={this.state.city}
-          country={this.state.country}
-          temp={this.state.temp}
-          sunrise={this.state.sunrise}
-          sunset={this.state.sunset}
-          feels_like={this.state.feels_like}
-          error={this.state.error}
-        />
+      <div className="mainWrapper">
+        <div className="mainContainer">
+          <div className="weatherInfo">
+            <Info />
+            <Form weatherMethod={this.gettingWeather} />
+            <Weather
+              city={this.state.city}
+              country={this.state.country}
+              temp={this.state.temp}
+              sunrise={this.state.sunrise}
+              sunset={this.state.sunset}
+              feels_like={this.state.feels_like}
+              error={this.state.error}
+            />
+          </div>
+        </div>
       </div>
     );
   }
