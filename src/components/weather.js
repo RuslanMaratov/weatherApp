@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import sunny from "../assets/sunny.png";
 
 class Weather extends React.Component {
   render() {
@@ -16,6 +17,10 @@ class Weather extends React.Component {
               <p>Влажность: {this.props.humidity} %</p>
               <p>Облачность: {this.props.clouds} %</p>
               <p>Скорость ветра: {this.props.windSpeed} м/с</p>
+            </div>
+
+            <div className="weatherImage">
+              <img src={sunny} alt="weather image" />
             </div>
           </div>
         )}

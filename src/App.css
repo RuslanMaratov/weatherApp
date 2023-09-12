@@ -78,6 +78,18 @@ select:-webkit-autofill:focus {
   border: 5px solid white;
   margin-top: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  background: #3b7abf;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.weatherImage {
+  width: 180px;
+  height: auto;
+}
+
+.weatherImage img {
+  width: 100%;
 }
