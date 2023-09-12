@@ -12,8 +12,9 @@ class App extends React.Component {
     country: undefined,
     temp: undefined,
     feels_like: undefined,
-    sunrise: undefined,
-    sunset: undefined,
+    humidity: undefined,
+    clouds: undefined,
+    windSpeed: undefined,
     error: undefined,
   };
 
@@ -26,23 +27,15 @@ class App extends React.Component {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       );
       const data = await api_url.json();
-      const sunset = data.sys.sunset;
-      const date = new Date();
-      date.setTime(sunset);
-      const sunset_date =
-        date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-      const sunrise = data.sys.sunrise;
-      date.setTime(sunrise);
-      const sunrise_date =
-        date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
       this.setState({
         city: data.name,
         country: data.sys.country,
         temp: data.main.temp,
         feels_like: data.main.feels_like,
-        sunrise: sunrise_date,
-        sunset: sunset_date,
+        humidity: data.main.humidity,
+        clouds: data.clouds.all,
+        windSpeed: data.wind.speed,
         error: undefined,
       });
     } else {
@@ -51,8 +44,9 @@ class App extends React.Component {
         country: undefined,
         temp: undefined,
         feels_like: undefined,
-        sunrise: undefined,
-        sunset: undefined,
+        humidity: undefined,
+        clouds: undefined,
+        windSpeed: undefined,
         error: "Вы не ввели название города(страны)!",
       });
     }
@@ -68,9 +62,10 @@ class App extends React.Component {
               city={this.state.city}
               country={this.state.country}
               temp={this.state.temp}
-              sunrise={this.state.sunrise}
-              sunset={this.state.sunset}
+              humidity={this.state.humidity}
               feels_like={this.state.feels_like}
+              clouds={this.state.clouds}
+              windSpeed={this.state.windSpeed}
               error={this.state.error}
             />
           </div>

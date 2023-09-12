@@ -9,12 +9,13 @@ class Weather extends React.Component {
           <div className="weatherResult">
             <div className="weatherResultText">
               <p>
-                Город: {this.props.city}, страна: {this.props.country}
+                Место: {this.props.city}, страна: {this.props.country}
               </p>
-              <p>Температура: {this.props.temp}</p>
-              <p>Восход Солнца: {this.props.sunrise}</p>
-              <p>Заход Солнца: {this.props.sunset}</p>
-              <p>Чувствуется как: {this.props.feels_like}</p>
+              <p>Температура: {this.props.temp} °C</p>
+              <p>Чувствуется как: {this.props.feels_like} °C</p>
+              <p>Влажность: {this.props.humidity} %</p>
+              <p>Облачность: {this.props.clouds} %</p>
+              <p>Скорость ветра: {this.props.windSpeed} м/с</p>
             </div>
           </div>
         )}
