@@ -1,8 +1,23 @@
 import React from "react";
 import "../App.css";
 import sunny from "../assets/sunny.png";
+import cloudly from "../assets/cloudly.png";
+import rainly from "../assets/rainly.png";
+import snowly from "../assets/snowly.png";
 
 class Weather extends React.Component {
+  getWeather() {
+    if (this.props.temp < 0) {
+      return snowly;
+    }
+
+    if (this.props.clouds < 30) {
+      return sunny;
+    }
+
+    return this.props.clouds < 60 ? cloudly : rainly;
+  }
+
   render() {
     return (
       <div>
@@ -20,7 +35,7 @@ class Weather extends React.Component {
             </div>
 
             <div className="weatherImage">
-              <img src={sunny} alt="weather image" />
+              <img src={this.getWeather()} alt="weather image" />
             </div>
           </div>
         )}

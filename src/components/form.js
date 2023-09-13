@@ -7,6 +7,7 @@ class Form extends React.Component {
       <div>
         <form className="form" onSubmit={this.props.weatherMethod}>
           <input
+            autoComplete="off"
             className="formInput"
             type="text"
             name="city"
