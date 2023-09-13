@@ -27,6 +27,11 @@ class App extends React.Component {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       );
       const data = await api_url.json();
+      const code = +(await data.cod);
+
+      if (code === 404) {
+        return alert(`Города ${city} не существует!`);
+      }
 
       this.setState({
         city: data.name,
