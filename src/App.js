@@ -31,6 +31,7 @@ class App extends React.Component {
 
       if (code === 404) {
         return alert(`Города ${city} не существует!`);
+        console.log("ERROR");
       }
 
       this.setState({
